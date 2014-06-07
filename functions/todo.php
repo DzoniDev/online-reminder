@@ -1,13 +1,13 @@
 <?php
 
-// MySQL details
+// Connecting to MySQL for the main app.
 
 class Db {
 	
 	public $mysql;
 	
 	function __construct() {
-		$this->mysql = new mysqli('db_host', 'db_user', 'db_pass', 'db_table') or die("problem");
+		$this->mysql = new mysqli('host', 'user', 'password', 'dbname') or die("problem");
 	}
 	
 	function delete_by_id($id) {

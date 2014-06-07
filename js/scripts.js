@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
 
 	//$("#addNewEntry").css('display', 'none');
 	//$("#tabs").append('<li id="newitem_tab"><a href="#">New Item</a></li>');
@@ -31,13 +31,14 @@ $(function() {
 	
 	// Brisanje zapisa
 	
-	$('a.deleteEntryAnchor').click(function() {
+	$('input.deleteEntryAnchor').change(function () {
 		var thisparam = $(this);
+        $(this).prop("checked", true);
 		thisparam.parent().parent().find('p').text('Please Wait...');
 		$.ajax({
 			type: "GET",
 			url: thisparam.attr('href'),
-			success: function() {
+			success: function () {
 				thisparam.parent().parent().fadeOut('slow');
 			}
 		});
@@ -46,23 +47,23 @@ $(function() {
 	
 	// Izmena zapisa
 	
-	$('.editEntry').click(function() {
+	$('.editEntry').click(function () {
 		var $this = $(this);
 		var oldText = $this.parent().parent().find('p').text();
 		var id = $this.parent().parent().find("#id").val();
 		$this.parent().parent().find('p').empty().append('<input class="newDescription" placeholder="' + oldText + '"></input>');
 		
-		$('.newDescription').blur(function() {
+		$('.newDescription').blur(function () {
 			var newText = $(this).val();
 			$.ajax({
 				type: 'POST',
 				url: 'updateEntry.php',
 				data: 'description=' + newText + '&id=' + id,
 				
-				success: function() {
+				success: function () {
 					$this.parent().parent().find('p').empty().append(newText);
 				}
-			})
+			});
 		});
 		return false;
 	});

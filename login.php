@@ -54,7 +54,13 @@ header("location:index.php");
       <script src="js/respond.min.js"></script>
     <![endif]-->
 	<style>
+        html {
+            height:100%;
+            min-height:100%;
+        }
 		body{
+            min-height:100% !important;
+            width: 100% !important; 
 			background: url("images/bg_login.jpg") no-repeat center center fixed; 
 			-webkit-background-size: cover;
 			-moz-background-size: cover;
@@ -121,11 +127,29 @@ header("location:index.php");
 			-webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
 			box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
 		}
-		.signup{
+		.github{
 			position: absolute;
-			bottom: 4%;
+			bottom: 3%;
 			left: 3%;			
 		}
+        .github a {
+            padding: 5px !important;   
+        }
+        .github a span {display: none;}
+        .github a:hover span {
+            display: block;
+            position: absolute; 
+            top: 1.5px; left: 40px;
+            padding: 5px; 
+            margin: 10px; z-index: 100;
+            color: #000; 
+            background: #fff;
+            font: 10px Verdana, sans-serif; 
+            text-align: center;
+            border-radius: 3px;
+            -webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+        }
 	</style>
   </head>
   <body>
@@ -138,6 +162,9 @@ header("location:index.php");
 			<input class="btn btn-embossed btn-info" type="submit" style="margin-top: 20px; width: 100% !important;" value="Log In"></input>
 		</form>
 	</login>
+	<div class="github">
+		<a href="https://github.com/DzoniDev/online-reminder/" class="btn btn-embossed btn-inverse" ><img src="images/github.png" alt="GitHub"/><span>Check out the GitHub repository!</span></a>
+	</div>
   </body>
 </html>
 <?php } ?>

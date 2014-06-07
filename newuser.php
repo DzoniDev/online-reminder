@@ -62,7 +62,13 @@
 		  <script src="js/respond.min.js"></script>
 		<![endif]-->
 		<style>
-			body{
+            html {
+                height:100%;
+                min-height:100%;
+            }
+            body{
+                min-height:100% !important;
+                width: 100% !important; 
 				background: url("images/bg_signup.jpg") no-repeat center center fixed; 
 				-webkit-background-size: cover;
 				-moz-background-size: cover;

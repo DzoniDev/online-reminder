@@ -200,6 +200,12 @@
 		-webkit-box-sizing: border-box;
 		outline: 0;
 	}
+
+    #deletecheckbox{
+        width: 20px;
+        height: 20px;
+        
+    }
 	
 	.newDescription input{
 		width: 60%;

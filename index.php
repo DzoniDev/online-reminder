@@ -21,32 +21,34 @@
 		
 		<link rel="stylesheet" href="css/style.css" />
 		
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+        <script>
+            $(function() {
+                var pull 		= $('#pull');
+                    menu 		= $('nav ul');
+                    menuHeight	= menu.height();
+
+                $(pull).on('click', function(e) {
+                    e.preventDefault();
+                    menu.slideToggle();
+                });
+
+                $(window).resize(function(){
+                    var w = $(window).width();
+                    if(w > 320 && menu.is(':hidden')) {
+                        menu.removeAttr('style');
+                    }
+                });
+            });
+        </script>
+        
 		<script type="text/javascript" src="js/scripts.js"></script>
 		
 		<!--[if lt IE 7]>
 			<script src="http://ie7-js.googlecode.com/svn/version/2.0(beta3)/IE7.js" type="text/javascript"></script>
 			<link rel="stylesheet" href="css/ie.css" />
 		<![endif]-->
-		<script>
-			$(function() {
-				var pull 		= $('#pull');
-					menu 		= $('nav ul');
-					menuHeight	= menu.height();
-
-				$(pull).on('click', function(e) {
-					e.preventDefault();
-					menu.slideToggle();
-				});
-
-				$(window).resize(function(){
-					var w = $(window).width();
-					if(w > 320 && menu.is(':hidden')) {
-						menu.removeAttr('style');
-					}
-				});
-			});
-		</script>
 	</head>
 	<body>
 	<div id="container">
@@ -54,13 +56,12 @@
 			<ul class="clearfix">
 				<li><a href="newuser.php">New User</a></li>
 				<li><a href="logout.php">Logout</a></li>
-				<!-- <li style="width: 150px!important; text-align: center;"><a><?php //echo "WELCOME ". $_SESSION['user']; ?></a></li> -->
 			</ul>
 			<a href="#" id="pull">Menu</a>
 		</nav>
 		
 		<div id="main">
-			<div class="container" id="data">
+			<div class="container gridster" id="data">
 			
 			<div class="eight columns">
 				<div id="addNewEntry">
@@ -94,8 +95,8 @@
 					<input type="hidden" name="id" id="id" value="$id" />
 					
 					<div class="options">
-						<a class="deleteEntryAnchor" href="delete.php?id=$id">D</a>
-						<a class="editEntry" href="#">E</a>
+						<!--<a class="editEntry bt-btn default" href="#">E</a>-->
+                        <input type="checkbox" id="deletecheckbox" class="deleteEntryAnchor" onclick="window.location.href='delete.php?id=$id'"/>
 					</div>
 EOD;
 						echo $data;
@@ -110,7 +111,5 @@ EOD;
 			</div>
 		</div><!--end main-->
 	</div><!--end container-->
-
-
-	</body>
+</body>
 </html>
